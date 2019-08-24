@@ -68,8 +68,8 @@ double timebase = 0.0;
 double totalTime = 0.0;
 int fps = 0;
 
-int width = 640;
-int height = 360;
+int width = 1920;
+int height = 1080;
 
 // This function takes in variables that define the perspective view of the camera, then outputs the four corner rays of the camera's view.
 // It takes in a vec3 eye, which is the position of the camera.
@@ -339,7 +339,7 @@ int main(int argc, char **argv)
 	// frames, which is 4 full rotations, which is
 	// 24 seconds at 60fps
 
-	while (totalFrame != 100)
+	while (totalFrame != 1440)
 	{
 		// Call the render function.
 		renderScene();
