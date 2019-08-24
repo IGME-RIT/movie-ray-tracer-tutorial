@@ -27,6 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <fstream>
 #include <vector>
+#include <windows.h>
 
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
@@ -67,8 +68,8 @@ double timebase = 0.0;
 double totalTime = 0.0;
 int fps = 0;
 
-int width = 1920;
-int height = 1080;
+int width = 640;
+int height = 360;
 
 // This function takes in variables that define the perspective view of the camera, then outputs the four corner rays of the camera's view.
 // It takes in a vec3 eye, which is the position of the camera.
@@ -129,7 +130,7 @@ void renderScene()
 		timebase = dtime;
 		tempFrame = 0;
 
-		std::string s = "FPS: " + std::to_string(fps) + " Frame: " + std::to_string(totalFrame);
+		std::string s = "FPS: " + std::to_string(fps) + " Frame: " + std::to_string(totalFrame) + " / 500";
 
 		glfwSetWindowTitle(window, s.c_str());
 	}
@@ -326,15 +327,19 @@ int main(int argc, char **argv)
 	// This will hold each screenshot
 	unsigned char* pixels = new unsigned char[3 * width * height];
 
+	// Create a place for fileName
 	char* fileName = (char*)malloc(100);
+
+	// This creates the folder, only if it does
+	// not already exist, called "exportedFrames"
+	CreateDirectoryA("exportedFrames", NULL);
 
 	// Enter the main loop.
 	// We will leave this loop after rendering 1440
 	// frames, which is 4 full rotations, which is
 	// 24 seconds at 60fps
 
-	// add a few to 1440, in case it glitches in start and end
-	while (totalFrame != 1450)
+	while (totalFrame != 100)
 	{
 		// Call the render function.
 		renderScene();
