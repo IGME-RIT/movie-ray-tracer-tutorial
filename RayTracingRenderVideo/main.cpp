@@ -130,7 +130,7 @@ void renderScene()
 		timebase = dtime;
 		tempFrame = 0;
 
-		std::string s = "FPS: " + std::to_string(fps) + " Frame: " + std::to_string(totalFrame) + " / 500";
+		std::string s = "FPS: " + std::to_string(fps) + " Frame: " + std::to_string(totalFrame) + " / 1440";
 
 		glfwSetWindowTitle(window, s.c_str());
 	}
